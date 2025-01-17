@@ -23,7 +23,7 @@ resource "azurerm_subnet" "vmsub" {
 }
 
 resource "azurerm_storage_account" "st" {
-  name                     = var.storage_account_name_prefix + var.storage_account_name
+  name                     = var.storage_account_name_prefix + "" + var.storage_account_name
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = var.storage_account_tier

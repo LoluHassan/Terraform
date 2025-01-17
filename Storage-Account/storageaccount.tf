@@ -40,3 +40,8 @@ resource "azurerm_storage_account" "st" {
   }
 }
 
+resource "azurerm_storage_container" "asc" {
+  name                 = "example-container"
+  storage_account_id   = azurerm_storage_account.st.id
+}
+

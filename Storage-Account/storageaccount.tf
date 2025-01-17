@@ -1,10 +1,6 @@
 resource "random_integer" "randid" {
   min = 10
   max = 99
-  keepers = {
-    # Generate a new ID when the resource group name changes
-    resource_group_name = azurerm_resource_group.rg.name
-  }
 }
 
 resource "azurerm_resource_group" "rg" {

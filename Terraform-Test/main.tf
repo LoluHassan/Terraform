@@ -5,7 +5,7 @@ terraform {
       version =  "~> 4.16.0"
     }
   }
-  required_version = ">= 0.14.9"
+  required_version = ">= 1.10.4"
 
   backend "azurerm" {
     resource_group_name   = "iac-states-rg"

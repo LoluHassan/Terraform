@@ -27,7 +27,7 @@ resource "azurerm_linux_virtual_machine" "vmlin" {
   }
 
   tags = {
-    environment = var.eresourcetags["environment"]
+    environment = var.resourcetags["environment"]
     managedby   = var.resourcetags["managedby"]
     department  = var.resourcetags["department"]
     workloads   = var.resourcetags["workloads"]

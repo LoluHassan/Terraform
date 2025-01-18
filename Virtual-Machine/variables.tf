@@ -62,3 +62,14 @@ variable "auto_update" {
   description = "Enable automatic updates on the Windows VM."
 }
 
+variable "resourcetags" {
+  type        = map(string)
+  default     = {
+    environment = "staging"
+    managedby   = "terraform"
+    department  = "finance"
+    workloads   = "data-processing"
+  }
+  description = "A map of tags to add to all resources."
+  
+}

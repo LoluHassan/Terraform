@@ -15,6 +15,13 @@ resource "azurerm_windows_virtual_machine" "vmwin" {
     disk_size_gb         = var.os_disk_size_gb
   }
 
+  tags = {
+    environment = var.environment
+    managedby   = var.resourcetags["managedby"]
+    department  = var.resourcetags["department"]
+    workloads   = var.resourcetags["workloads"]
+  }
+
   source_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"

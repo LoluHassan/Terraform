@@ -25,4 +25,11 @@ resource "azurerm_linux_virtual_machine" "vmlin" {
     sku       = "22_04-lts"
     version   = "latest"
   }
+
+  tags = {
+    environment = var.eresourcetags["environment"]
+    managedby   = var.resourcetags["managedby"]
+    department  = var.resourcetags["department"]
+    workloads   = var.resourcetags["workloads"]
+  }
 }

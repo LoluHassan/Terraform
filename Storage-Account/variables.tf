@@ -26,7 +26,7 @@ variable "storage_account_name_prefix" {
 
 variable "storage_account_name" {
   type        = string
-  default     = "storageaccount"
+  default     = "storeacc"
   description = "The name of the Storage Account."
 }
 

@@ -2,7 +2,7 @@ output "resource_group_name" {
   value = azurerm_resource_group.rg.name
 }
 
-output "storage_account_name" {
+output "virtual_machine_name" {
   value = azurerm_storage_account.st.name
 }
 
@@ -12,8 +12,4 @@ output "virtual_network_name" {
 
 output "subnet_name" {
   value = azurerm_subnet.vmsub.name
-}
-
-output "storage_container_name" {
-  value = azurerm_storage_container.asc.name
 }

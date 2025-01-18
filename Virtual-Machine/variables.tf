@@ -49,3 +49,16 @@ variable "vnet_name" {
   default     = "vnet"
   description = "The name of the Storage Account."
 }
+
+variable "os_disk_size_gb" {
+  type        = number
+  default     = 50
+  description = "The size of the OS disk in GB."
+}
+
+variable "auto_update" {
+  type        = bool
+  default     = true
+  description = "Enable automatic updates on the Windows VM."
+}
+

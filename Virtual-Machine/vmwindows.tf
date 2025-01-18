@@ -12,6 +12,7 @@ resource "azurerm_windows_virtual_machine" "vmwin" {
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
+    disk_size_gb         = var.os_disk_size_gb
   }
 
   source_image_reference {
@@ -20,4 +21,7 @@ resource "azurerm_windows_virtual_machine" "vmwin" {
     sku       = "2016-Datacenter"
     version   = "latest"
   }
+
+  enable_automatic_updates = var.auto_update
+
 }

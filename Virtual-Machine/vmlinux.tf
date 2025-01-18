@@ -16,6 +16,7 @@ resource "azurerm_linux_virtual_machine" "vmlin" {
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
+    disk_size_gb         = var.os_disk_size_gb
   }
 
   source_image_reference {

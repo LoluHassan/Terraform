@@ -6,7 +6,7 @@ variable "resource_group_location" {
 
 variable "resource_group_name" {
   type        = string
-  default     = "storage-account"
+  default     = "vnet"
   description = "The resource group name"
   
 }

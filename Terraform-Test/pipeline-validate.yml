@@ -1,0 +1,43 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - /TERRAFORM/Terraform-Test/*
+
+
+pool:
+    Azure Pipelines
+
+steps:
+
+- task: TerraformTaskV4@4
+  displayName: Terraform Init
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/TERRAFORM/Terraform-Test'
+    backendServiceArm: ''
+    backendAzureRmResourceGroupName: 'iac-states-rg'
+    backendAzureRmStorageAccountName: 'infraiacstates'
+    backendAzureRmContainerName: 'remotestate'
+    backendAzureRmKey: 'terraformtest.tfstate'
+
+- task: TerraformTaskV4@4
+  displayName: Terraform Validate
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/TERRAFORM/Terraform-Test'
+
+- task: TerraformTaskV4@4
+  displayName: Terraform Plan
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/TERRAFORM/Terraform-Test'
+    environmentServiceNameAzureRM: ''
+
+
+

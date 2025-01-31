@@ -1,0 +1,46 @@
+trigger:
+    none
+
+jobs:
+- job: Terraform_Test_DEPLOY
+  timeoutInMinutes: 0
+  pool:
+    Azure Pipelines
+  steps:
+  - task: TerraformTaskV4@4
+    displayName: Initialise code
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/TERRAFORM/Terraform-Test'
+      backendServiceArm: ''
+      backendAzureRmResourceGroupName: 'iac-states-rg'
+      backendAzureRmStorageAccountName: 'infraiacstates'
+      backendAzureRmContainerName: 'remotestate'
+      backendAzureRmKey: 'terraformtest.tfstate'
+
+  - task: TerraformTaskV4@4
+    displayName: Validate Syntax
+    inputs:
+      provider: 'azurerm'
+      command: 'validate'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/TERRAFORM/Terraform-Test'
+
+  - task: TerraformTaskV4@4
+    displayName: Plan infra changes
+    inputs:
+      provider: 'azurerm'
+      command: 'plan'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/TERRAFORM/Terraform-Test'
+      environmentServiceNameAzureRM: ''
+
+
+  - task: TerraformTaskV4@4
+    displayName: Apply Infra changes
+    inputs:
+      provider: 'azurerm'
+      command: 'apply'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/TERRAFORM/Terraform-Test'
+      environmentServiceNameAzureRM: ''
+
+
